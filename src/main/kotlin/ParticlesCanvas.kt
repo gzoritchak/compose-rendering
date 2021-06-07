@@ -31,35 +31,28 @@ fun ParticlesCanvas(time: Long, renderingWith: RenderingWith, partCount: Int, ) 
             drawRect(red)
             (0 until partCount).forEach { id ->
                 val particle = particles[id]
+                val x = xScale(particle.x).toFloat()
+                val y = yScale(particle.y).toFloat()
+                val color = Colors.Web.aliceblue.toColor()
                 when (renderingWith) {
                     RenderingWith.Square -> drawRect(
-                        color = Colors.Web.aliceblue.toColor(),
-                        Offset(
-                            xScale(particle.position.x).toFloat(),
-                            yScale(particle.position.y).toFloat(),
-                        ),
+                        color = color,
+                        Offset(x, y),
                         Size(10f, 10f)
                     )
-
                     RenderingWith.Circle -> drawCircle(
-                        color = Colors.Web.aliceblue.toColor(),
+                        color = color,
                         radius = 5f,
-                        center = Offset(
-                            xScale(particle.position.x).toFloat(),
-                            yScale(particle.position.y).toFloat(),
-                        )
+                        center = Offset(x, y)
                     )
-
                     RenderingWith.Diamond -> drawPath(Path().apply {
-                        moveTo(xScale(particle.position.x).toFloat(), yScale(particle.position.y).toFloat() + 5)
-                        lineTo(xScale(particle.position.x).toFloat() + 5, yScale(particle.position.y).toFloat())
-                        lineTo(xScale(particle.position.x).toFloat(), yScale(particle.position.y).toFloat() - 5)
-                        lineTo(xScale(particle.position.x).toFloat() - 5, yScale(particle.position.y).toFloat())
+                        moveTo(x, y + 5)
+                        lineTo(x + 5, y)
+                        lineTo(x, y - 5)
+                        lineTo(x - 5, y)
                         close()
-                    }, Colors.Web.aliceblue.toColor())
-
+                    }, color)
                 }
-
             }
         }
 
