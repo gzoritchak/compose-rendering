@@ -2,4 +2,4 @@ This project tests the rendering performances of Jetpack Compose / Skia for data
 
 We detailed the results in this post:
 
-https://dev.to/gz_k/jetpack-compose-desktop-rendering-performances-59nm-temp-slug-5948634
+https://dev.to/gz_k/jetpack-compose-desktop-rendering-performances-4992
